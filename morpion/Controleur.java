@@ -9,13 +9,6 @@ package morpion;
  *
  * @author damien
  */
-public class Morpion {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Controleur {
     
 }
