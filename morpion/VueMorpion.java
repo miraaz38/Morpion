@@ -31,21 +31,28 @@ public class VueMorpion extends Observable{
         JPanel mainPanel = new JPanel(new BorderLayout());
         window.add(mainPanel) ;
         
+        // =================================================================================
+        // NORD
         JPanel panelHaut = new JPanel() ;
         mainPanel.add(panelHaut, BorderLayout.NORTH);
         panelHaut.add(new JLabel("Joueur 1 VS Joueur 2")) ;
-
+        
+        // =================================================================================
+        // OUEST 
         JPanel panelOuest = new JPanel(new GridLayout(3,1));
         mainPanel.add(panelOuest, BorderLayout.WEST);
         panelOuest.add(new JLabel("Joueur 1"));
         panelOuest.add(new JLabel("\n X"));
         
-        
+        // =================================================================================
+        // EST
         JPanel panelEst = new JPanel(new GridLayout(3,1));
         mainPanel.add(panelEst, BorderLayout.EAST);
         panelEst.add(new JLabel("Joueur 2"));
         panelEst.add(new JLabel("\n O"));
         
+        // =================================================================================
+        // CENTRE
         JPanel panelCentre = new JPanel(new GridLayout(3,3));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         
@@ -55,6 +62,8 @@ public class VueMorpion extends Observable{
             panelCentre.add(label);
         }
         
+        // =================================================================================
+        // SUD
         JPanel panelBas = new JPanel() ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         panelBas.add(new JLabel("Bon match")) ;
