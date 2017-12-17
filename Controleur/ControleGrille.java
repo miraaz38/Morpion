@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package morpion;
+package Controleur;
 
 import java.util.Observable;
 import java.util.Observer;
+import morpion.Bouton;
+import morpion.Joueur;
+import morpion.Symbole;
 
 /**
  *
