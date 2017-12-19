@@ -8,8 +8,7 @@ package Controleur;
 import java.util.Observable;
 import java.util.Observer;
 import morpion.Bouton;
-import morpion.Joueur;
-import morpion.Symbole;
+import morpion.*;
 
 /**
  *
@@ -19,37 +18,19 @@ public class ControleGrille implements Observer{
     
     private Joueur j1 = new Joueur("toto", Symbole.CROIX);
     private Joueur j2 = new Joueur("titi", Symbole.ROND);
-    private Joueur currentJ;
-
+    private Morpion morpion = new Morpion(j1, j2, 3);
+    
     @Override
     public void update(Observable VueMorpion, Object b) {
-            cocherCase();
-            joueurSuivant();                    
+        if (b instanceof Bouton) {
+            Bouton bouton = (Bouton) b;
+            morpion.cocherCase(bouton);
         }
-    
-    public void cocherCase(Bouton b){
-        Symbole s = currentJ.getSymbole();
-        int x = b.getX();
-        int y = b.getY();
-    }
-    
-    public void joueurSuivant(){
-        if (currentJ == j1) {
-            currentJ = j2;
-        } else{
-            currentJ = j1;
-        }
-    }
-    
-    public void resultat(){
-        int o = 0;
-        int x = 0;
-        //on parcourt ligne première case si x : x++ si o, o++, deuxième case
-        // si x et x avant x++ si o et o avant o++ si x et o avant o=0 et x++ etc
-        //si x ==3 ou o == 3 victoire
-        // sinon on parcourt en diago idem
-        // idem pour les colonnes
         
-    }
+        morpion.joueurSuivant(); 
+        
+        }
+    
+ 
     
 }

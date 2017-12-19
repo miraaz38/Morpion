@@ -1,17 +1,23 @@
 package morpion;
 
 import static java.lang.Math.pow;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Plateau {
     private int cote;
     private int nbCase;
-    private int grille [][] ;
+    private ArrayList<Case> cases;
     
     public Plateau(int n){
         setCote(n);
-        setNbCase(n);
-        grille = new int[n][n];
+        setNbCase(n^2);
+        
+        for (int i=0; i<n; i++) {
+            for (int j = 0; j < n; j++) {
+                cases.add(new Case(i+1, j+1, null));
+            }
+        }
     }
     
 
@@ -44,9 +50,16 @@ public class Plateau {
     }
 
     /**
-     * @return the Grille
+     * @return the cases
      */
-    public int[][] getGrille() {
-        return grille;
+    public ArrayList<Case> getCases() {
+        return cases;
+    }
+
+    /**
+     * @param cases the cases to set
+     */
+    public void setCases(ArrayList<Case> cases) {
+        this.cases = cases;
     }
 }

@@ -5,7 +5,6 @@
  */
 package morpion;
 
-import java.util.List;
 import javax.swing.JButton;
 
 /**

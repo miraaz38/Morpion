@@ -29,7 +29,7 @@ public class VueMorpion extends Observable{
     private final JFrame window ;
     private ArrayList<Bouton> buttons = new ArrayList<>();    
     
-    public VueMorpion(){
+    public VueMorpion(int n){
         window = new JFrame();
         window.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         window.setSize(700, 500);
@@ -54,8 +54,8 @@ public class VueMorpion extends Observable{
         mainPanel.add(panelOuest, BorderLayout.WEST);
         //panelOuest.setSize(145, 345);
         panelOuest.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelOuest.add(new JLabel("Joueur 1"));
-        panelOuest.add(new JLabel("\n X"));
+        panelOuest.add(new JLabel("       Joueur 1       ", JLabel.CENTER));
+        panelOuest.add(new JLabel("\n X", JLabel.CENTER));
         
         // =================================================================================
         // EST
@@ -63,20 +63,20 @@ public class VueMorpion extends Observable{
         mainPanel.add(panelEst, BorderLayout.EAST);
         //panelEst.setSize(145, 345);
         panelEst.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelEst.add(new JLabel("Joueur 2"));
-        panelEst.add(new JLabel("\n O"));
+        panelEst.add(new JLabel("       Joueur 2       ", JLabel.CENTER));
+        panelEst.add(new JLabel("\n O", JLabel.CENTER));
         
         // =================================================================================
         // CENTRE
-        JPanel panelCentre = new JPanel(new GridLayout(3,3));
+        JPanel panelCentre = new JPanel(new GridLayout(n,n));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         //panelOuest.setSize(395, 345);
         panelCentre.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        for (int i=1; i<=9; i++) {
+        for (int i=1; i<=n*n; i++) {
             JButton boutton = new JButton();
             panelCentre.add(boutton);
-            buttons.add(new Bouton(boutton, false, (i-1)/3+1, (i-1)%3+1));
+            buttons.add(new Bouton(boutton, false, (i-1)/n+1, (i-1)%n+1));
         }
         
         for (Bouton b : buttons) {
@@ -105,8 +105,10 @@ public class VueMorpion extends Observable{
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (b.getBool() == false) {
+                        Font f = new Font("arial", 0, 90);
                         bTemp.setText("O");
-                        bTemp.setForeground(Color.red); 
+                        bTemp.setForeground(Color.blue);
+                        bTemp.setFont(f);
                     }
                 }
 
@@ -126,7 +128,7 @@ public class VueMorpion extends Observable{
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         //panelOuest.setSize(695, 45);
         panelBas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelBas.add(new JButton("retour"));
+        panelBas.add(new JButton("Retour"));
         panelBas.add(new JLabel("Bon match")) ;
         
         
@@ -137,7 +139,7 @@ public class VueMorpion extends Observable{
     }
     
     public static void main(String [] args) {
-        VueMorpion exemple1 = new VueMorpion();
+        VueMorpion exemple1 = new VueMorpion(3);
         exemple1.afficher();
    }
 }
