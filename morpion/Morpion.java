@@ -39,7 +39,7 @@ public class Morpion {
         }
     }
     
-    public void resultat(int n){ // n coté du morpion
+    public String resultat(int n){ // n coté du morpion
         int o = 0;
         int x = 0;
         //on parcourt ligne première case si x : x++ si o, o++, deuxième case
@@ -51,27 +51,36 @@ public class Morpion {
         
         //lignes
         for (int i = 0; i < n; i++) {
+            x = 0;
+            o = 0;
             for (int j = 0; j < n; j++) {
                 if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o > 0) {
                     x++;
                     o = 0;
-                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && o > 0) {
+                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
                     o++;
                     x = 0;
                 }else{
                     x = 0;
                     o = 0;
                 }
+            }
+            if (x == 3) {
+                return "X";
+            }else if (o == 3) {
+                return "O";
             }
         }
         
         //colonnes
         for (int j = 0; j < n; j++) {
+            x = 0;
+            o = 0;
             for (int i = 0; i < n; i++) {
-                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o > 0) {
+                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o >= 0) {
                     x++;
                     o = 0;
-                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && o > 0) {
+                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
                     o++;
                     x = 0;
                 }else{
@@ -79,11 +88,18 @@ public class Morpion {
                     o = 0;
                 }
             }
+            if (x == 3) {
+                return "X";
+            }else if (o == 3) {
+                return "O";
+            }
         }
         
         //diagonales descendantes de gauche à droite
         for (int i = 0; i < n; i++) {
-            if (cases.get(i-1 + n + i - 1).getSymbole() == Symbole.CROIX && o > 0) {
+            x = 0;
+            o = 0;
+            if (cases.get(i-1 + n + i - 1).getSymbole() == Symbole.CROIX && o >= 0) {
                     x++;
                     o = 0;
                 }else if (cases.get(i-1 + n + i - 1).getSymbole() == Symbole.ROND && o > 0) {
@@ -108,6 +124,15 @@ public class Morpion {
                     o = 0;
                 }
         }
+        
+        if (x == 3) {
+                return "X";
+            }else if (o == 3) {
+                return "O";
+            }else{
+                return "Match Nul";
+            }
+        
     }
 
     /**
