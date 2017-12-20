@@ -14,7 +14,7 @@ import morpion.*;
  *
  * @author damien
  */
-public class ControleGrille implements Observer{
+public class Controle implements Observer{
     
     private Joueur j1 = new Joueur("toto", Symbole.CROIX);
     private Joueur j2 = new Joueur("titi", Symbole.ROND);
