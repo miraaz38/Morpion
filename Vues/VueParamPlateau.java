@@ -10,11 +10,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import morpion.Bouton;
 
 /**
@@ -23,6 +27,7 @@ import morpion.Bouton;
  */
 public class VueParamPlateau {
     private JFrame window ;
+    private HashMap<Integer, JRadioButton> ensembleDesBoutonsRadios ;
     
     public VueParamPlateau(){
         window = new JFrame();
@@ -45,10 +50,51 @@ public class VueParamPlateau {
  
         // =================================================================================
         // CENTRE
-        JPanel panelCentre = new JPanel();
+        JPanel panelCentre = new JPanel(new GridLayout(3,5));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         panelCentre.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelCentre.add(new J)
+        
+        for (int i = 1; i <= 4; i++) {
+            panelCentre.add(new JLabel());
+        }
+        
+        
+        panelCentre.add(new JLabel("Taille du plateau :")) ;
+        
+        for (int i = 1; i <= 2; i++) {
+            panelCentre.add(new JLabel());
+        }
+
+        ButtonGroup groupeEspeces = new ButtonGroup();
+        ensembleDesBoutonsRadios = new HashMap<>();
+        
+        JRadioButton boutonRadio = new JRadioButton("3 X 3");
+        panelCentre.add(boutonRadio);
+        groupeEspeces.add(boutonRadio);
+        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+        
+        for (int i = 1; i <= 2; i++) {
+            panelCentre.add(new JLabel());
+        }
+
+        boutonRadio = new JRadioButton("4 X 4");
+        panelCentre.add(boutonRadio);
+        groupeEspeces.add(boutonRadio);
+        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+        
+        for (int i = 1; i <= 2; i++) {
+            panelCentre.add(new JLabel());
+        }
+
+        boutonRadio = new JRadioButton("5 X 5");
+        panelCentre.add(boutonRadio);
+        groupeEspeces.add(boutonRadio);
+        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+        
+        for (int i = 1; i <= 4; i++) {
+            panelCentre.add(new JLabel());
+        }
+
     
         // =================================================================================
         // SUD
@@ -62,4 +108,13 @@ public class VueParamPlateau {
         
         
     }
+    
+    public void afficher() {
+        this.window.setVisible(true);
+    }
+    
+    public static void main(String [] args) {
+        VueParamPlateau exemple1 = new VueParamPlateau();
+        exemple1.afficher();
+   }
 }
