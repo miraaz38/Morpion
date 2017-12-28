@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,7 +30,8 @@ public class VueTournoi extends Observable{
     private JButton boutonRetour;
     private JLabel titre;
     private JPanel panelList;
-    private 
+    private JPanel panelJoueurs;
+    private JComboBox listeDeroulante;
     
     public VueTournoi(){
         Font f = new Font("arial", 0, 50);
@@ -65,9 +67,26 @@ public class VueTournoi extends Observable{
         // CENTRE
         JPanel panelCentre = new JPanel(new GridLayout(3,1));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
-        panelCentre.add(new JLabel());
+         // selection du nombre de joueur
+        panelCentre.add(panelList = new JPanel(new GridLayout(1,2)));
+        panelList.add(new JLabel("nombre de joueur : ", JLabel.RIGHT));
+        listeDeroulante = new JComboBox();
+        listeDeroulante.addItem(3);
+        listeDeroulante.addItem(4);
+        listeDeroulante.addItem(5);
+        panelList.add(listeDeroulante);
+        listeDeroulante.setSelectedIndex(0);
         
-        panelCentre.add(new JLabel());
+        // titre selection des pseudos
+        panelCentre.add(new JLabel("SELECTION DES PSEUDOS", JLabel.CENTER));
+        
+        //Choix des pseudos
+        panelCentre.add(panelJoueurs = new JPanel(new GridLayout(5,2)));
+        
+        for (int i = 1; i < 6; i++) {
+            panelJoueurs.add(new JLabel("NOM JOUEUR " + i + " :", JLabel.RIGHT));
+            panelJoueurs.add(new JTextField());
+        }
         
         
         // =================================================================================
@@ -82,6 +101,28 @@ public class VueTournoi extends Observable{
         boutonValider = new JButton("Valider");
         
         panelBas.add(boutonValider);
+        
+        listeDeroulante.addActionListener (new ActionListener () {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateNbr();
+            }
+        });
+        updateNbr();
+    }
+    
+    private void updateNbr(){
+        for (int i = 0; i < 10; i+=2) {
+            if(i < (listeDeroulante.getSelectedIndex() + 3) * 2){
+                panelJoueurs.getComponent(i).setVisible(true);
+                panelJoueurs.getComponent(i+1).setVisible(true);
+            }
+            else{
+                panelJoueurs.getComponent(i).setVisible(false);
+                panelJoueurs.getComponent(i+1).setVisible(false);
+            }
+            
+        }
     }
     
     public void afficher() {
@@ -89,7 +130,7 @@ public class VueTournoi extends Observable{
     }
     
     public static void main(String [] args) {
-        VueAcceuil exemple1 = new VueAcceuil();
+        VueTournoi exemple1 = new VueTournoi();
         exemple1.afficher();
    }
     
