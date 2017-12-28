@@ -27,10 +27,9 @@ public class VueTournoi extends Observable{
     private final JFrame window ;
     private JButton boutonValider;
     private JButton boutonRetour;
-    private JButton boutonUnContreUn;
-    private JButton boutonTournoi;
-    private JLabel bienvenue;
-    
+    private JLabel titre;
+    private JPanel panelList;
+    private 
     
     public VueTournoi(){
         Font f = new Font("arial", 0, 50);
@@ -48,9 +47,9 @@ public class VueTournoi extends Observable{
         // NORD
         JPanel panelHaut = new JPanel() ;
         mainPanel.add(panelHaut, BorderLayout.NORTH);
-        bienvenue = new JLabel("BIENVENUE");
-        panelHaut.add(bienvenue);
-        bienvenue.setFont(f);
+        titre = new JLabel("Tournoi", JLabel.CENTER);
+        panelHaut.add(titre);
+        titre.setFont(f);
         
         // =================================================================================
         // OUEST 
@@ -64,19 +63,11 @@ public class VueTournoi extends Observable{
         
         // =================================================================================
         // CENTRE
-        JPanel panelCentre = new JPanel(new GridLayout(5,5));
+        JPanel panelCentre = new JPanel(new GridLayout(3,1));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
-        boutonUnContreUn = new JButton("1 vs 1");
-        boutonTournoi = new JButton("Tournoi");
-        for (int i = 0; i < 11; i++) {
-            panelCentre.add(new JLabel());
-        }
-        panelCentre.add(boutonUnContreUn);
         panelCentre.add(new JLabel());
-        panelCentre.add(boutonTournoi);
-        for (int i = 0; i < 11; i++) {
-            panelCentre.add(new JLabel());
-        }
+        
+        panelCentre.add(new JLabel());
         
         
         // =================================================================================

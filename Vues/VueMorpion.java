@@ -124,12 +124,14 @@ public class VueMorpion extends Observable{
         
         // =================================================================================
         // SUD
-        JPanel panelBas = new JPanel(new GridLayout(1,3)) ;
+        JPanel panelBas = new JPanel(new GridLayout(1,5)) ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         //panelOuest.setSize(695, 45);
         panelBas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         panelBas.add(new JButton("Retour"));
+        panelBas.add(new JLabel());
         panelBas.add(new JLabel("Bon match")) ;
+        panelBas.add(new JLabel());
         
         
     }

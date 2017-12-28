@@ -29,6 +29,7 @@ public class VueAcceuil extends Observable{
     private JButton boutonRetour;
     private JButton boutonUnContreUn;
     private JButton boutonTournoi;
+    private JButton boutonRegle;
     private JLabel bienvenue;
     
     
@@ -68,13 +69,22 @@ public class VueAcceuil extends Observable{
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         boutonUnContreUn = new JButton("1 vs 1");
         boutonTournoi = new JButton("Tournoi");
-        for (int i = 0; i < 11; i++) {
+        boutonRegle = new JButton("Règle");
+        for (int i = 0; i <= 5; i++) {
             panelCentre.add(new JLabel());
         }
+        
         panelCentre.add(boutonUnContreUn);
         panelCentre.add(new JLabel());
         panelCentre.add(boutonTournoi);
-        for (int i = 0; i < 11; i++) {
+        
+        for (int i = 0; i <= 7; i++) {
+            panelCentre.add(new JLabel());
+        }
+        
+        panelCentre.add(boutonRegle);
+        
+        for (int i = 0; i <= 6; i++) {
             panelCentre.add(new JLabel());
         }
         

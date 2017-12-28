@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.util.HashMap;
+import java.util.Observable;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,7 +26,7 @@ import morpion.Bouton;
  *
  * @author carrierd
  */
-public class VueParamPlateau {
+public class VueParamPlateau extends Observable{
     private JFrame window ;
     private HashMap<Integer, JRadioButton> ensembleDesBoutonsRadios ;
     
@@ -50,51 +51,37 @@ public class VueParamPlateau {
  
         // =================================================================================
         // CENTRE
-        JPanel panelCentre = new JPanel(new GridLayout(3,5));
+        JPanel panelCentre = new JPanel(new GridLayout(6,3));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
         panelCentre.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        for (int i = 1; i <= 4; i++) {
-            panelCentre.add(new JLabel());
-        }
         
-        
-        panelCentre.add(new JLabel("Taille du plateau :")) ;
-        
-        for (int i = 1; i <= 2; i++) {
-            panelCentre.add(new JLabel());
-        }
-
+        JRadioButton boutonRadio;
         ButtonGroup groupeEspeces = new ButtonGroup();
         ensembleDesBoutonsRadios = new HashMap<>();
         
-        JRadioButton boutonRadio = new JRadioButton("3 X 3");
-        panelCentre.add(boutonRadio);
-        groupeEspeces.add(boutonRadio);
-        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
-        
-        for (int i = 1; i <= 2; i++) {
-            panelCentre.add(new JLabel());
+        for (int i = 0; i < 18; i++) {
+            if (i == 4) {
+                panelCentre.add(new JLabel("Taille du plateau :", JLabel.CENTER));
+            }else if (i == 7) {
+                boutonRadio = new  JRadioButton("3 X 3");                
+                panelCentre.add(boutonRadio);
+                groupeEspeces.add(boutonRadio);
+                ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+            }else if (i == 10) {
+                boutonRadio = new JRadioButton("4 X 4");
+                panelCentre.add(boutonRadio);
+                groupeEspeces.add(boutonRadio);
+                ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+            }else if (i == 13) {
+                boutonRadio = new JRadioButton("5 X 5");
+                panelCentre.add(boutonRadio);
+                groupeEspeces.add(boutonRadio);
+                ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
+            }else{
+                panelCentre.add(new JLabel());
+            }
         }
-
-        boutonRadio = new JRadioButton("4 X 4");
-        panelCentre.add(boutonRadio);
-        groupeEspeces.add(boutonRadio);
-        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
-        
-        for (int i = 1; i <= 2; i++) {
-            panelCentre.add(new JLabel());
-        }
-
-        boutonRadio = new JRadioButton("5 X 5");
-        panelCentre.add(boutonRadio);
-        groupeEspeces.add(boutonRadio);
-        ensembleDesBoutonsRadios.put(ensembleDesBoutonsRadios.size(), boutonRadio);
-        
-        for (int i = 1; i <= 4; i++) {
-            panelCentre.add(new JLabel());
-        }
-
     
         // =================================================================================
         // SUD
