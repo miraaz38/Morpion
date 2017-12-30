@@ -29,9 +29,8 @@ public class VueDuel extends Observable{
     private final JFrame window ;
     private JButton boutonValider;
     private JButton boutonRetour;
-    private JButton boutonUnContreUn;
-    private JButton boutonTournoi;
     private JLabel titre;
+    private JPanel panelJoueurs;
     
     
     public VueDuel(){
@@ -66,33 +65,30 @@ public class VueDuel extends Observable{
         
         // =================================================================================
         // CENTRE
-        JPanel panelCentre = new JPanel(new GridLayout(3,2));
-        for (int i = 0; i < 6; i++) {
-            if (i == 0) {
-                panelCentre.add(new JLabel("Joueur 1", JLabel.CENTER));
-            }else if (i == 1) {
-                mainPanel.add(panelCentre, BorderLayout.CENTER);
+        JPanel panelCentre = new JPanel(new GridLayout(3,1));
+        mainPanel.add(panelCentre, BorderLayout.CENTER);
+        panelCentre.add(new JLabel("SELECTION DES PSEUDOs", JLabel.CENTER));
+        panelCentre.add(panelJoueurs = new JPanel(new GridLayout(4,2)));
+        for (int i = 0; i < 8; i++) {
+            if (i == 2) {
+                panelJoueurs.add(new JLabel("Joueur 1", JLabel.CENTER));
+            }else if (i == 3) {
                 JTextField pseudo1 = new JTextField();
+                panelJoueurs.add(pseudo1);
             }else if (i == 4) {
-                panelCentre.add(new JLabel("Joueur 2", JLabel.CENTER));
+                panelJoueurs.add(new JLabel("Joueur 2", JLabel.CENTER));
             }else if (i == 5) {
                 JTextField pseudo2 = new JTextField();
-                panelCentre.add(pseudo2);
+                panelJoueurs.add(pseudo2);
             }else{
-                panelCentre.add(new JLabel());
+                panelJoueurs.add(new JLabel());
             }
         }
-        
-//        mainPanel.add(panelCentre, BorderLayout.CENTER);
-//        JTextField pseudo1 = new JTextField();
-//        panelCentre.add(pseudo1);
-//        JTextField pseudo2 = new JTextField();
-//        panelCentre.add(pseudo2);
-        
-        
+        panelCentre.add(new JLabel());
         
         // =================================================================================
         // SUD
+        
         JPanel panelBas = new JPanel(new GridLayout(1,3)) ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         boutonRetour = new JButton("Retour");
@@ -104,6 +100,10 @@ public class VueDuel extends Observable{
         
         panelBas.add(boutonValider);
     }
+    
+    
+    // =================================================================================
+    // Déclaratioon des autre méthodes.
     
     public void afficher() {
         this.window.setVisible(true);
