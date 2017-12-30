@@ -67,7 +67,7 @@ public class VueDuel extends Observable{
         // CENTRE
         JPanel panelCentre = new JPanel(new GridLayout(3,1));
         mainPanel.add(panelCentre, BorderLayout.CENTER);
-        panelCentre.add(new JLabel("SELECTION DES PSEUDOs", JLabel.CENTER));
+        panelCentre.add(new JLabel("SELECTION DES PSEUDOS", JLabel.CENTER));
         panelCentre.add(panelJoueurs = new JPanel(new GridLayout(4,2)));
         for (int i = 0; i < 8; i++) {
             if (i == 2) {
@@ -91,12 +91,30 @@ public class VueDuel extends Observable{
         
         JPanel panelBas = new JPanel(new GridLayout(1,3)) ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
-        boutonRetour = new JButton("Retour");
+        boutonRetour = new JButton("Retour");        
+        
+        boutonRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Retour";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
         
         panelBas.add(boutonRetour);
         panelBas.add(new JLabel()) ;
         
         boutonValider = new JButton("Valider");
+        
+        boutonValider.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Valider";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
         
         panelBas.add(boutonValider);
     }

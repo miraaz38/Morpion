@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import static java.awt.SystemColor.window;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -128,7 +130,18 @@ public class VueMorpion extends Observable{
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         //panelOuest.setSize(695, 45);
         panelBas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelBas.add(new JButton("Retour"));
+        JButton btnRetour = new JButton("Retour");
+        
+        btnRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Retour";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
+        
+        panelBas.add(btnRetour);
         panelBas.add(new JLabel());
         panelBas.add(new JLabel("Bon match")) ;
         panelBas.add(new JLabel());

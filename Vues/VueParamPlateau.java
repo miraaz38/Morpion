@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Observable;
 import javax.swing.BorderFactory;
@@ -89,9 +91,34 @@ public class VueParamPlateau extends Observable{
         mainPanel.add(panelBas, BorderLayout.SOUTH);
         //panelOuest.setSize(695, 45);
         panelBas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        panelBas.add(new JButton("Retour"));
-        panelBas.add(new JLabel());
-        panelBas.add(new JButton("Valider"));
+        
+        JButton boutonRetour = new JButton("Retour");        
+        
+        boutonRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Retour";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
+        
+        panelBas.add(boutonRetour);
+        panelBas.add(new JLabel()) ;
+        
+        JButton boutonValider = new JButton("Valider");
+        
+        boutonValider.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Valider";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
+        
+        panelBas.add(boutonValider);
+        
         
         
     }
