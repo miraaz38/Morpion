@@ -77,6 +77,7 @@ public class VueMorpion extends Observable{
         
         for (int i=1; i<=n*n; i++) {
             JButton boutton = new JButton();
+            boutton.setBackground(Color.white);
             panelCentre.add(boutton);
             buttons.add(new Bouton(boutton, false, (i-1)/n+1, (i-1)%n+1));
         }
@@ -91,6 +92,7 @@ public class VueMorpion extends Observable{
                     bTemp.setText("O");
                     bTemp.setForeground(Color.blue);
                     bTemp.setFont(f);
+                    bTemp.setBackground(Color.white);
                     b.setBool(true);
                     notifyObservers(b);
                     clearChanged();
@@ -111,13 +113,15 @@ public class VueMorpion extends Observable{
                         bTemp.setText("O");
                         bTemp.setForeground(Color.blue);
                         bTemp.setFont(f);
+                        bTemp.setBackground(Color.LIGHT_GRAY);
                     }
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (b.getBool() == false) {
-                        b.getButt().setText(null);
+                        bTemp.setText(null);
+                        bTemp.setBackground(Color.white);
                     }
                 }
             })

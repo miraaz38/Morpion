@@ -8,6 +8,7 @@ package Controleur;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JFrame;
 import morpion.Bouton;
 import morpion.*;
 
@@ -23,6 +24,7 @@ public class Controle implements Observer{
     
     private Joueur currentJ;
     private Plateau plateau;
+    private JFrame vueActive;
     
     
     public Controle(Joueur j1, Joueur j2, int n){
@@ -45,185 +47,188 @@ public class Controle implements Observer{
         }
     }
     
-    public String resultat(int n){ // n coté du morpion
-        int o = 0;
-        int x = 0;
-        int resX = 0;
-        int resO = 0;
-        //on parcourt ligne première case si x : x++ si o, o++, deuxième case
-        // si x et x avant x++ si o et o avant o++ si x et o avant o=0 et x++ etc
-        //si x ==3 ou o == 3 victoire
-        // sinon on parcourt en diago idem
-        // idem pour les colonnes
-        ArrayList<Case> cases = getPlateau().getCases();
+//    public String resultat(int n){ // n coté du morpion
         
-        //lignes
-        for (int i = 0; i < n; i++) {
-            x = 0;
-            o = 0;
-            for (int j = 0; j < n; j++) {
-                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o > 0) {
-                    x++;
-                    o = 0;
-                    if (x == 3) {
-                        resX++;
-                        x = 0;
-                    }
-                    
-                    if (resX == n - 2) {
-                        return "X";
-                    }
-                    
-                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
-                    o++;
-                    x = 0;
-                    if (o == 3) {
-                        resO++;
-                        o = 0;
-                    }
-                    
-                    if (resO == n - 2) {
-                        return "O";
-                    }
-                    
-                }else{
-                    x = 0;
-                    o = 0;
-                }
-            }
-    }
         
-        //colonnes
-        for (int j = 0; j < n; j++) {
-            x = 0;
-            o = 0;
-            for (int i = 0; i < n; i++) {
-                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o >= 0) {
-                    x++;
-                    o = 0;
-                    
-                    if (x == 3) {
-                        resX++;
-                        x = 0;
-                    }
-                    
-                    if (resX == n - 2) {
-                        return "X";
-                    }
-                    
-                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
-                    o++;
-                    x = 0;
-                    
-                    if (o == 3) {
-                        resO++;
-                        o = 0;
-                    }
-                    
-                    if (resO == n - 2) {
-                        return "O";
-                    }
-                    
-                }else{
-                    x = 0;
-                    o = 0;
-                }
-            }
-        }
-        
-        //diagonales descendantes de gauche à droite
-        x = 0;
-        o = 0;
-        
-        if (n == 3) {
-            if (cases.get(1).getSymbole() == Symbole.CROIX 
-                    && cases.get(5).getSymbole() == Symbole.CROIX 
-                    && cases.get(9).getSymbole() == Symbole.CROIX) {
-                resX++;
-                
-                if (resX == n - 2) {
-                        return "X";
-                    }
-                
-            }else if (cases.get(1).getSymbole() == Symbole.ROND 
-                    && cases.get(5).getSymbole() == Symbole.ROND 
-                    && cases.get(9).getSymbole() == Symbole.ROND) {
-                resO++;
-                
-                if (resO == n - 2) {
-                        return "O";
-                    }
-            }
-        }else if (n == 4) {
-            if (cases.get(1).getSymbole() == Symbole.CROIX 
-                    && cases.get(6).getSymbole() == Symbole.CROIX 
-                    && cases.get(11).getSymbole() == Symbole.CROIX) {
-                if (cases.get(16).getSymbole() == Symbole.CROIX) {
-                    resX+=2;
-                }else{
-                    resX++;
-                }
-                
-                if (resX == n - 2) {
-                        return "X";
-                    }
-                
-            }else if (cases.get(1).getSymbole() == Symbole.ROND 
-                    && cases.get(6).getSymbole() == Symbole.ROND 
-                    && cases.get(11).getSymbole() == Symbole.ROND) {
-                if (cases.get(16).getSymbole() == Symbole.ROND) {
-                    resO+=2;
-                }else{
-                    resO++;
-                }
-                
-                if (resO == n - 2) {
-                        return "O";
-                    }
-                
-            }else if (cases.get(2).getSymbole() == Symbole.CROIX 
-                    && cases.get(7).getSymbole() == Symbole.CROIX 
-                    && cases.get(12).getSymbole() == Symbole.CROIX) {
-                resX++;
-                
-                if (resX == n - 2) {
-                        return "X";
-                    }
-                
-            }else if (cases.get(2).getSymbole() == Symbole.ROND 
-                    && cases.get(7).getSymbole() == Symbole.ROND 
-                    && cases.get(12).getSymbole() == Symbole.ROND){
-                resO++;
-                
-                if (resO == n - 2) {
-                        return "X";
-                    }
-            }else if (cases.get(5).getSymbole() == Symbole.CROIX 
-                    && cases.get(10).getSymbole() == Symbole.CROIX 
-                    && cases.get(15).getSymbole() == Symbole.CROIX) {
-                resX++;
-                
-                if (resX == n - 2) {
-                        return "X";
-                    }
-                
-            }else if (cases.get(5).getSymbole() == Symbole.ROND 
-                    && cases.get(10).getSymbole() == Symbole.ROND 
-                    && cases.get(15).getSymbole() == Symbole.ROND){
-                resO++;
-                
-                if (resO == n - 2) {
-                        return "X";
-                    }
-            }
-        }else if (n == 5) {
-            
-        }
-        
-        //diagonales montantes de gauche à droite
-        
-       return null; 
-    }
+    
+//        int o = 0;
+//        int x = 0;
+//        int resX = 0;
+//        int resO = 0;
+//        //on parcourt ligne première case si x : x++ si o, o++, deuxième case
+//        // si x et x avant x++ si o et o avant o++ si x et o avant o=0 et x++ etc
+//        //si x ==3 ou o == 3 victoire
+//        // sinon on parcourt en diago idem
+//        // idem pour les colonnes
+//        ArrayList<Case> cases = getPlateau().getCases();
+//        
+//        //lignes
+//        for (int i = 0; i < n; i++) {
+//            x = 0;
+//            o = 0;
+//            for (int j = 0; j < n; j++) {
+//                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o > 0) {
+//                    x++;
+//                    o = 0;
+//                    if (x == 3) {
+//                        resX++;
+//                        x = 0;
+//                    }
+//                    
+//                    if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                    
+//                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
+//                    o++;
+//                    x = 0;
+//                    if (o == 3) {
+//                        resO++;
+//                        o = 0;
+//                    }
+//                    
+//                    if (resO == n - 2) {
+//                        return "O";
+//                    }
+//                    
+//                }else{
+//                    x = 0;
+//                    o = 0;
+//                }
+//            }
+//    }
+//        
+//        //colonnes
+//        for (int j = 0; j < n; j++) {
+//            x = 0;
+//            o = 0;
+//            for (int i = 0; i < n; i++) {
+//                if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.CROIX && o >= 0) {
+//                    x++;
+//                    o = 0;
+//                    
+//                    if (x == 3) {
+//                        resX++;
+//                        x = 0;
+//                    }
+//                    
+//                    if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                    
+//                }else if (cases.get(i-1 + n + j - 1).getSymbole() == Symbole.ROND && x >= 0) {
+//                    o++;
+//                    x = 0;
+//                    
+//                    if (o == 3) {
+//                        resO++;
+//                        o = 0;
+//                    }
+//                    
+//                    if (resO == n - 2) {
+//                        return "O";
+//                    }
+//                    
+//                }else{
+//                    x = 0;
+//                    o = 0;
+//                }
+//            }
+//        }
+//        
+//        //diagonales descendantes de gauche à droite
+//        x = 0;
+//        o = 0;
+//        
+//        if (n == 3) {
+//            if (cases.get(1).getSymbole() == Symbole.CROIX 
+//                    && cases.get(5).getSymbole() == Symbole.CROIX 
+//                    && cases.get(9).getSymbole() == Symbole.CROIX) {
+//                resX++;
+//                
+//                if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                
+//            }else if (cases.get(1).getSymbole() == Symbole.ROND 
+//                    && cases.get(5).getSymbole() == Symbole.ROND 
+//                    && cases.get(9).getSymbole() == Symbole.ROND) {
+//                resO++;
+//                
+//                if (resO == n - 2) {
+//                        return "O";
+//                    }
+//            }
+//        }else if (n == 4) {
+//            if (cases.get(1).getSymbole() == Symbole.CROIX 
+//                    && cases.get(6).getSymbole() == Symbole.CROIX 
+//                    && cases.get(11).getSymbole() == Symbole.CROIX) {
+//                if (cases.get(16).getSymbole() == Symbole.CROIX) {
+//                    resX+=2;
+//                }else{
+//                    resX++;
+//                }
+//                
+//                if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                
+//            }else if (cases.get(1).getSymbole() == Symbole.ROND 
+//                    && cases.get(6).getSymbole() == Symbole.ROND 
+//                    && cases.get(11).getSymbole() == Symbole.ROND) {
+//                if (cases.get(16).getSymbole() == Symbole.ROND) {
+//                    resO+=2;
+//                }else{
+//                    resO++;
+//                }
+//                
+//                if (resO == n - 2) {
+//                        return "O";
+//                    }
+//                
+//            }else if (cases.get(2).getSymbole() == Symbole.CROIX 
+//                    && cases.get(7).getSymbole() == Symbole.CROIX 
+//                    && cases.get(12).getSymbole() == Symbole.CROIX) {
+//                resX++;
+//                
+//                if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                
+//            }else if (cases.get(2).getSymbole() == Symbole.ROND 
+//                    && cases.get(7).getSymbole() == Symbole.ROND 
+//                    && cases.get(12).getSymbole() == Symbole.ROND){
+//                resO++;
+//                
+//                if (resO == n - 2) {
+//                        return "X";
+//                    }
+//            }else if (cases.get(5).getSymbole() == Symbole.CROIX 
+//                    && cases.get(10).getSymbole() == Symbole.CROIX 
+//                    && cases.get(15).getSymbole() == Symbole.CROIX) {
+//                resX++;
+//                
+//                if (resX == n - 2) {
+//                        return "X";
+//                    }
+//                
+//            }else if (cases.get(5).getSymbole() == Symbole.ROND 
+//                    && cases.get(10).getSymbole() == Symbole.ROND 
+//                    && cases.get(15).getSymbole() == Symbole.ROND){
+//                resO++;
+//                
+//                if (resO == n - 2) {
+//                        return "X";
+//                    }
+//            }
+//        }else if (n == 5) {
+//            
+//        }
+//        
+//        //diagonales montantes de gauche à droite
+//        
+//       return null; 
+//    }
 
     /**
      * @return the currentJ

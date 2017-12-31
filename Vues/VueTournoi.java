@@ -93,12 +93,30 @@ public class VueTournoi extends Observable{
         // SUD
         JPanel panelBas = new JPanel(new GridLayout(1,3)) ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
-        boutonRetour = new JButton("Retour");
+        boutonRetour = new JButton("Retour");        
+        
+        boutonRetour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Taille Plateau";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
         
         panelBas.add(boutonRetour);
         panelBas.add(new JLabel()) ;
         
         boutonValider = new JButton("Valider");
+        
+        boutonValider.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                setChanged();
+                String message = "Grille";                   
+                notifyObservers(message);
+                clearChanged();}
+        });
         
         panelBas.add(boutonValider);
         

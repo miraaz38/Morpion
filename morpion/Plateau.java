@@ -9,6 +9,7 @@ public class Plateau {
     private int nbCase;
     private ArrayList<Case> cases;
     
+    
     public Plateau(int n){
         setCote(n);
         setNbCase(n^2);

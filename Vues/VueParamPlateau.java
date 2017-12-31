@@ -98,7 +98,7 @@ public class VueParamPlateau extends Observable{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setChanged();
-                String message = "Retour";                   
+                String message = "Accueil";                   
                 notifyObservers(message);
                 clearChanged();}
         });
@@ -112,7 +112,7 @@ public class VueParamPlateau extends Observable{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setChanged();
-                String message = "Valider";                   
+                String message = "Pseudo";                   
                 notifyObservers(message);
                 clearChanged();}
         });

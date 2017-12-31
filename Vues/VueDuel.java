@@ -97,7 +97,7 @@ public class VueDuel extends Observable{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setChanged();
-                String message = "Retour";                   
+                String message = "Taille Plateau";                   
                 notifyObservers(message);
                 clearChanged();}
         });
@@ -111,7 +111,7 @@ public class VueDuel extends Observable{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setChanged();
-                String message = "Valider";                   
+                String message = "Grille";                   
                 notifyObservers(message);
                 clearChanged();}
         });

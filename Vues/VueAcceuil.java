@@ -93,32 +93,32 @@ public class VueAcceuil extends Observable{
         // SUD
         JPanel panelBas = new JPanel(new GridLayout(1,3)) ;
         mainPanel.add(panelBas, BorderLayout.SOUTH);
-        boutonRetour = new JButton("Retour");        
-        
-        boutonRetour.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                setChanged();
-                String message = "Retour";                   
-                notifyObservers(message);
-                clearChanged();}
-        });
-        
-        panelBas.add(boutonRetour);
-        panelBas.add(new JLabel()) ;
-        
-        boutonValider = new JButton("Valider");
-        
-        boutonValider.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                setChanged();
-                String message = "Valider";                   
-                notifyObservers(message);
-                clearChanged();}
-        });
-        
-        panelBas.add(boutonValider);
+//        boutonRetour = new JButton("Retour");        
+//        
+//        boutonRetour.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                setChanged();
+//                String message = "Retour";                   
+//                notifyObservers(message);
+//                clearChanged();}
+//        });
+//        
+//        panelBas.add(boutonRetour);
+//        panelBas.add(new JLabel()) ;
+//        
+//        boutonValider = new JButton("Valider");
+//        
+//        boutonValider.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                setChanged();
+//                String message = "Valider";                   
+//                notifyObservers(message);
+//                clearChanged();}
+//        });
+//        
+//        panelBas.add(boutonValider);
     }
     
     public void afficher() {
