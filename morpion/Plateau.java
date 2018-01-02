@@ -37,11 +37,67 @@ public class Plateau {
         nbCasesCochees += 1;
     }
     
-//    public boolean verifCroix(int x, int y){
-//        // vérification ligne
-//        
-//        for (int i = 0; i< getCote(); i)
-//    }
+    public boolean verifCroix(int x, int y){
+        
+        int total = 0;
+        // verification ligne       
+        for (int j = 0; j< getCote(); j++){
+            total += matriceCroix[x][j];
+        }
+        // verification colonne
+        if (total < getCote()){
+            total = 0;
+            for (int i = 0; i< getCote(); i++){
+                total += matriceCroix[i][y];
+            }
+        }
+        // verification diagonale principale
+        if (total < getCote() && x==y){
+            total = 0;
+            for (int i = 0; i< getCote(); i++){
+                total += matriceCroix[i][i];
+            }
+        }
+        // verification anti-diagonale
+        if (total < getCote() && x+y+1 == getCote()){
+            total = 0;
+            for (int i =0; i< getCote(); i++){
+                total+= matriceCroix[getCote()-1-i][i];
+            }
+        }
+        return(total == getCote());           
+    }
+    
+    public boolean verifRond(int x, int y){
+        
+        int total = 0;
+        // verification ligne       
+        for (int j = 0; j< getCote(); j++){
+            total += matriceRond[x][j];
+        }
+        // verification colonne
+        if (total < getCote()){
+            total = 0;
+            for (int i = 0; i< getCote(); i++){
+                total += matriceRond[i][y];
+            }
+        }
+        // verification diagonale principale
+        if (total < getCote() && x==y){
+            total = 0;
+            for (int i = 0; i< getCote(); i++){
+                total += matriceRond[i][i];
+            }
+        }
+        // verification anti-diagonale
+        if (total < getCote() && x+y+1 == getCote()){
+            total = 0;
+            for (int i =0; i< getCote(); i++){
+                total+= matriceRond[getCote()-1-i][i];
+            }
+        }
+        return(total == getCote());           
+    }
     
 
     /**

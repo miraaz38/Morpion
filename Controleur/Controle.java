@@ -54,18 +54,18 @@ public class Controle implements Observer{
         }
     }
     
-//    public String resultat(int x, int y) // n coté du morpion 
-//    {
-//        
-//        Symbole s = getCurrentJ().getSymbole();
-//        if (s == Symbole.CROIX && verifCroix(x,y) || s== Symbole.ROND && verifRond(x,y) ){
-//            return "Partie Gagne";
-//        }else if(plateau.getNbCasesCochees()== plateau.getNbCase()){
-//            return "Match nul";
-//        }else{
-//            return "Continue";
-//        }
-//    }
+    public String resultat(int x, int y) // n coté du morpion 
+    {
+        
+        Symbole s = getCurrentJ().getSymbole();
+        if (s == Symbole.CROIX && plateau.verifCroix(x,y) || s== Symbole.ROND && plateau.verifRond(x,y) ){
+            return "Partie Gagne";
+        }else if(plateau.getNbCasesCochees()== plateau.getNbCase()){
+            return "Match nul";
+        }else{
+            return "Continue";
+        }
+    }
         
    
 
@@ -126,9 +126,9 @@ public class Controle implements Observer{
         if (b instanceof Bouton) {
             Bouton bouton = (Bouton) b;
             cocherCase(bouton);
-//            if (resultat(bouton.getX()-1, bouton.getY()-1)== "Partie Gagne"){
-//                
-//            }
+            if (resultat(bouton.getX()-1, bouton.getY()-1)== "Partie Gagne"){
+                
+            }
         }
         
         joueurSuivant(); 
