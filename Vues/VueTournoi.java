@@ -147,6 +147,10 @@ public class VueTournoi extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueTournoi exemple1 = new VueTournoi();
         exemple1.afficher();

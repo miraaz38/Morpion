@@ -72,6 +72,10 @@ public class VueLooser extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueLooser exemple1 = new VueLooser();
         exemple1.afficher();

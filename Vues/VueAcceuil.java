@@ -125,6 +125,10 @@ public class VueAcceuil extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueAcceuil exemple1 = new VueAcceuil();
         exemple1.afficher();

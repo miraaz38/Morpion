@@ -127,6 +127,10 @@ public class VueDuel extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueDuel exemple1 = new VueDuel();
         exemple1.afficher();

@@ -157,6 +157,10 @@ public class VueMorpion extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueMorpion exemple1 = new VueMorpion(3);
         exemple1.afficher();

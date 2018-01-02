@@ -6,20 +6,42 @@ import java.util.List;
 
 public class Plateau {
     private int cote;
-    private int nbCase;
+    private int nbCases;
+    private int nbCasesCochees;
     private ArrayList<Case> cases;
+    private int[][] matriceRond;
+    private int[][] matriceCroix;
+           
     
     
     public Plateau(int n){
         setCote(n);
         setNbCase(n^2);
+        this.nbCasesCochees = 0;
+        this.matriceRond = new int[n][n];
+        this.matriceCroix = new int [n][n];
         
         for (int i=0; i<n; i++) {
             for (int j = 0; j < n; j++) {
                 cases.add(new Case(i+1, j+1, null));
+                matriceCroix[i][j] = 0;
+                matriceRond[i][j] = 0;
+
             }
         }
+        
+        
     }
+    
+    public void addCaseCoche(){
+        nbCasesCochees += 1;
+    }
+    
+//    public boolean verifCroix(int x, int y){
+//        // vérification ligne
+//        
+//        for (int i = 0; i< getCote(); i)
+//    }
     
 
     /**
@@ -40,14 +62,14 @@ public class Plateau {
      * @return the nbCase
      */
     public int getNbCase() {
-        return nbCase;
+        return nbCases;
     }
 
     /**
      * @param nbCase the nbCase to set
      */
     public void setNbCase(int nbCase) {
-        this.nbCase = (int) pow(nbCase,2.0);
+        this.nbCases = nbCase;
     }
 
     /**
@@ -62,5 +84,47 @@ public class Plateau {
      */
     public void setCases(ArrayList<Case> cases) {
         this.cases = cases;
+    }
+
+    /**
+     * @return the nbCasesCochees
+     */
+    public int getNbCasesCochees() {
+        return nbCasesCochees;
+    }
+
+    /**
+     * @param nbCasesCochees the nbCasesCochees to set
+     */
+    public void setNbCasesCochees(int nbCasesCochees) {
+        this.nbCasesCochees = nbCasesCochees;
+    }
+
+    /**
+     * @return the matriceRond
+     */
+    public int[][] getMatriceRond() {
+        return matriceRond;
+    }
+
+    /**
+     * @param matriceRond the matriceRond to set
+     */
+    public void ajoutMatriceRond(int x,int y) {
+        this.matriceRond[x][y] = 1;
+    }
+
+    /**
+     * @return the matriceCroix
+     */
+    public int[][] getMatriceCroix() {
+        return matriceCroix;
+    }
+
+    /**
+     * @param matriceCroix the matriceCroix to set
+     */
+    public void ajoutMatriceCroix(int x,int y) {
+        this.matriceCroix[x][y] = 1;
     }
 }

@@ -127,6 +127,10 @@ public class VueParamPlateau extends Observable{
         this.window.setVisible(true);
     }
     
+    public void fermer() {
+        this.window.setVisible(false);
+    }
+    
     public static void main(String [] args) {
         VueParamPlateau exemple1 = new VueParamPlateau();
         exemple1.afficher();
