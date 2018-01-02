@@ -41,7 +41,7 @@ public class Plateau {
         
         int total = 0;
         // verification ligne       
-        for (int j = 0; j< getCote(); j++){
+        for (int j = 0; j < getCote(); j++){
             total += matriceCroix[x][j];
         }
         // verification colonne
